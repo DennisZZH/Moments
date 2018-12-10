@@ -1,5 +1,6 @@
 package edu.ucsb.cs184.moments.moments;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,12 @@ public class SearchGroupsAdapter extends CustomAdapter{
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Show Group Profile
+                    if (User.user.inGroup(data.getId())){
+                        Intent intent = new Intent(context, GroupPostsActivity.class);
+                        intent.putExtra(GroupsFragment.GROUP, data);
+                        activity.startActivity(intent);
+                        activity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
+                    }
                 }
             });
             name.setText(data.getName());

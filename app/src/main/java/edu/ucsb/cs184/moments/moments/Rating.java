@@ -91,9 +91,9 @@ public class Rating implements Parcelable {
     public static Rating findRating(Key key){ return FirebaseHelper.findRating(key); }
 
     public static class Key implements Parcelable{
-        String userid;
-        Long time;
-        Post.Key postKey;
+        public String userid;
+        public Long time;
+        public Post.Key postKey;
         public Key() {}
         public Key(String userid, Long time, Post.Key postKey){
             this.userid = userid;

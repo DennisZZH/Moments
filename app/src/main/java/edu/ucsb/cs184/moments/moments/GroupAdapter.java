@@ -1,7 +1,5 @@
 package edu.ucsb.cs184.moments.moments;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.view.menu.MenuBuilder;
 import android.view.LayoutInflater;
@@ -55,11 +53,10 @@ public class GroupAdapter extends CustomAdapter {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
                     Intent intent = new Intent(context, GroupPostsActivity.class);
                     intent.putExtra(GroupsFragment.GROUP, data);
-                    context.startActivity(intent);
-                    ((Activity) context).overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
+                    activity.startActivity(intent);
+                    activity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
                 }
             });
             view.setOnLongClickListener(new View.OnLongClickListener() {

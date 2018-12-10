@@ -126,10 +126,8 @@ public class Comment implements Parcelable {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Post))
-            return false;
+        if (obj == null) return false;
+        if (!(obj instanceof Comment)) return false;
         return GetKey().equals(((Comment) obj).GetKey());
     }
     @Override
@@ -142,9 +140,9 @@ public class Comment implements Parcelable {
     public static Comment findComment(Key key) { return FirebaseHelper.findComment(key); }
 
     public static class Key implements Parcelable{
-        String userid;
-        Long time;
-        Post.Key postKey;
+        public String userid;
+        public Long time;
+        public Post.Key postKey;
         public Key() {}
         public Key(String userid, Long time, Post.Key postKey){
             this.userid = userid;

@@ -188,8 +188,8 @@ public class Post implements Parcelable {
     }
 
     public static class Key implements Parcelable {
-        String userid;
-        Long time;
+        public String userid;
+        public Long time;
         public Key() {}
         public Key(String userid, Long time){
             this.userid = userid;
