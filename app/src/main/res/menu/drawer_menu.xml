@@ -21,6 +21,7 @@
         <item
             android:id="@+id/test"
             android:icon="@drawable/ic_anonymous"
+            android:visible="false"
             android:title="Test"/>
     </group>
 

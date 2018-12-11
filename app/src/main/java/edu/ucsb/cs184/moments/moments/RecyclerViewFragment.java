@@ -132,7 +132,7 @@ public class RecyclerViewFragment extends Fragment {
     }
     private boolean isValidType(Object obj){
         return obj instanceof Post || obj instanceof Comment || obj instanceof User || obj instanceof Message ||
-                obj instanceof Group || obj instanceof String || obj instanceof SearchPair;
+                obj instanceof Group || obj instanceof String || obj instanceof SearchPair || obj instanceof Rating;
     }
 
     public void clear(){

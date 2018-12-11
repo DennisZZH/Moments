@@ -19,7 +19,7 @@ public class GroupSettingsActivity extends AppCompatActivity {
 
     public static final String GROUP = "Group", QUIT = "Quit";
     private static final String SETTINGS = "Settings";
-    private Group group;
+    public static Group group;
     private ImageButton back;
 
     @Override

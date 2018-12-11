@@ -22,7 +22,7 @@ public class EditPostActivity extends AppCompatActivity {
     private ImageView usericon;
     private EditText edit_content;
     private Intent intent;
-    private Group group;
+    public static Group group;
     private Post draft;
 
     @Override
@@ -37,7 +37,7 @@ public class EditPostActivity extends AppCompatActivity {
         send = findViewById(R.id.edit_send);
         at = findViewById(R.id.edit_at);
         hashtag = findViewById(R.id.edit_hashtag);
-        group = intent.getParcelableExtra(GROUP);
+//        group = intent.getParcelableExtra(GROUP);
         draft = intent.getParcelableExtra(DRAFT);
 
         edit_content.addTextChangedListener(new TextWatcher() {

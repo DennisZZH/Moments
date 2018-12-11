@@ -52,7 +52,8 @@ public class GroupPostsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), EditPostActivity.class);
-                intent.putExtra(EditPostActivity.GROUP, group);
+                EditPostActivity.group = group;
+//                intent.putExtra(EditPostActivity.GROUP, group);
                 startActivityForResult(intent, EditPostActivity.EDIT_POST);
                 overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
             }
@@ -67,7 +68,8 @@ public class GroupPostsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GroupPostsActivity.this, GroupSettingsActivity.class);
-                intent.putExtra(GroupSettingsActivity.GROUP, group);
+                GroupSettingsActivity.group = group;
+//                intent.putExtra(GroupSettingsActivity.GROUP, group);
                 startActivityForResult(intent, SETTINGS);
                 overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
             }
