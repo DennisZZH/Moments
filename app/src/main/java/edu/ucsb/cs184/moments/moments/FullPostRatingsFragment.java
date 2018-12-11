@@ -59,7 +59,8 @@ public class FullPostRatingsFragment extends Fragment {
             TextView textView = textViews.get(i);
             int counting_star = post.counting_star(i + 1);
             textView.setText(counting_star + "");
-            progressBar.setProgress((review == 0) ? 50 : counting_star / review * 100);
+            int progress = (review == 0) ? 50 : (int) ((float) counting_star / review * 100);
+            progressBar.setProgress(progress);
         }
     }
 
