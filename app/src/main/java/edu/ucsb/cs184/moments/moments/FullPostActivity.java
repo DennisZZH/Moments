@@ -200,7 +200,7 @@ public class FullPostActivity extends AppCompatActivity {
                     if (rating == 0)
                         ratingBar.setRating(post.ratings_avg());
                     else
-                        User.user.rate(new Rating(User.user.getId(), (int) rating, Calendar.getInstance().getTimeInMillis(), post.GetKey()));
+                        User.user.rate(post, new Rating(User.user.getId(), (int) rating, Calendar.getInstance().getTimeInMillis(), post.GetKey()));
                 }
             }
         });

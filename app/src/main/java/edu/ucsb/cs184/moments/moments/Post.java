@@ -115,10 +115,9 @@ public class Post implements Parcelable {
         String substr = content;
         int index = substr.indexOf("@");
         while(index != -1){
-            int space = substr.indexOf(" ");
-            if (space == -1){
-                space = substr.length();
-            }
+            int space = substr.substring(index + 1).indexOf(" ");
+            if (space == -1) space = substr.length();
+            else space += index + 1;
             data.add(substr.substring(index + 1, space));
             try{
                 substr = substr.substring(space + 1);

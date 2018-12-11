@@ -91,7 +91,7 @@ public class AddCommentDialog extends DialogFragment {
                     new_comment = new Comment(User.user.getId(), content, Calendar.getInstance().getTimeInMillis(), comment.GetKey());
                     comment.addReply(new_comment);
                 }
-                if (!User.user.isUser(new_comment.getUserid()))
+                if (!User.user.isUser(new_comment.GetPosterId()))
                     User.findUser(new_comment.GetPosterId()).CommentNotification(new_comment, false);
                 fragment.addElement(new_comment);
                 if (onSendListener != null) onSendListener.onClick(v);
