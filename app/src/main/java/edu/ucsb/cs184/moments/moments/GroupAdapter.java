@@ -54,7 +54,8 @@ public class GroupAdapter extends CustomAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, GroupPostsActivity.class);
-                    intent.putExtra(GroupsFragment.GROUP, data);
+//                    intent.putExtra(GroupPostsActivity.GROUP, data);
+                    GroupPostsActivity.group = data;
                     activity.startActivity(intent);
                     activity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
                 }

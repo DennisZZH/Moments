@@ -25,8 +25,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class GroupsFragment extends Fragment {
 
-    public static final String GROUP = "Group";
-
     private static final int CREATE_GROUP = 0;
 
     private View view;
@@ -132,7 +130,7 @@ public class GroupsFragment extends Fragment {
         if (resultCode != RESULT_OK) return;
         if (requestCode == CREATE_GROUP){
             try {
-                fragment.addElement(data.getParcelableExtra(GROUP));
+                fragment.addElement(data.getParcelableExtra(GroupPostsActivity.GROUP));
             } catch (RecyclerViewFragment.UnsupportedDataException e) {
                 e.printStackTrace();
             }

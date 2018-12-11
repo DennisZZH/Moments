@@ -87,10 +87,11 @@ public class AddCommentDialog extends DialogFragment {
                 if (post != null){
                     new_comment = new Comment(User.user.getId(), content, Calendar.getInstance().getTimeInMillis(), post.GetKey());
                     post.addComment(new_comment);
-                }else if (comment != null){
-                    new_comment = new Comment(User.user.getId(), content, Calendar.getInstance().getTimeInMillis(), comment.GetKey());
-                    comment.addReply(new_comment);
                 }
+//                else if (comment != null){
+//                    new_comment = new Comment(User.user.getId(), content, Calendar.getInstance().getTimeInMillis(), comment.GetKey());
+//                    comment.addReply(new_comment);
+//                }
                 if (!User.user.isUser(new_comment.GetPosterId()))
                     User.findUser(new_comment.GetPosterId()).CommentNotification(new_comment, false);
                 fragment.addElement(new_comment);

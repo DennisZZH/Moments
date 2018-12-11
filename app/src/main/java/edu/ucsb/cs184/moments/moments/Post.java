@@ -72,12 +72,12 @@ public class Post implements Parcelable {
         return null;
     }
     public float ratings_avg(){
-        float sum = 0;
         int count = ratings.size();
         if (count == 0) return 0f;
-        for (int i = 0; i < count; i++)
-            sum += ratings.get(i).getRating();
-        return sum / count;
+        int star_sum = 0;
+        for (Rating rating: ratings)
+            star_sum += rating.getRating();
+        return (float) star_sum / count;
     }
     public float ratings_avg(int digit){
         return Float.parseFloat(String.format("%." + digit + "f", ratings_avg()));
@@ -204,6 +204,22 @@ public class Post implements Parcelable {
             }
         }
 
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(userid);
+            if (time == null) {
+                dest.writeByte((byte) 0);
+            } else {
+                dest.writeByte((byte) 1);
+                dest.writeLong(time);
+            }
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
         public static final Creator<Key> CREATOR = new Creator<Key>() {
             @Override
             public Key createFromParcel(Parcel in) {
@@ -222,22 +238,6 @@ public class Post implements Parcelable {
             if (!(obj instanceof Key)) return false;
             Key k = (Key) obj;
             return time.equals(k.time) && userid.equals(k.userid);
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(userid);
-            if (time == null) {
-                dest.writeByte((byte) 0);
-            } else {
-                dest.writeByte((byte) 1);
-                dest.writeLong(time);
-            }
         }
     }
 

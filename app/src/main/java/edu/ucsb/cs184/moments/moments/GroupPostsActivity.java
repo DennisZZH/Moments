@@ -14,7 +14,9 @@ import com.jude.swipbackhelper.SwipeBackHelper;
 
 public class GroupPostsActivity extends AppCompatActivity {
 
+    public static final String GROUP = "Group";
     public static final int SETTINGS = 2;
+    public static Group group;
 
     private Toolbar toolbar;
     private TextView title;
@@ -24,7 +26,7 @@ public class GroupPostsActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private RecyclerViewFragment fragment;
     private Intent data;
-    private Group group;
+//    private Group group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class GroupPostsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_posts);
         SwipeBackHelper.onCreate(this);
         data = getIntent();
-        group = data.getParcelableExtra(GroupsFragment.GROUP);
+//        group = data.getParcelableExtra(GROUP);
 
         toolbar = findViewById(R.id.gp_toolbar);
         fab = findViewById(R.id.gp_fab);

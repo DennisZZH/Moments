@@ -28,7 +28,7 @@ public class GroupSettingsActivity extends AppCompatActivity {
         SwipeBackHelper.onCreate(this);
         setContentView(R.layout.activity_group_settings);
         Intent intent = getIntent();
-        group = intent.getParcelableExtra(GroupsFragment.GROUP);
+        group = intent.getParcelableExtra(GroupPostsActivity.GROUP);
 
         back = findViewById(R.id.gs_back);
         back.setOnClickListener(new View.OnClickListener() {

@@ -61,7 +61,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                         User.user.createGroup(group.getId());
                         FirebaseHelper.uploadIcon(((BitmapDrawable) icon.getDrawable()).getBitmap(), FirebaseHelper.GROUP_ICON, group.getId());
                         Intent intent = new Intent(getApplicationContext(), GroupsFragment.class);
-                        intent.putExtra(GroupsFragment.GROUP, group);
+                        intent.putExtra(GroupPostsActivity.GROUP, group);
                         setResult(RESULT_OK, intent);
                         overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
                         finish();

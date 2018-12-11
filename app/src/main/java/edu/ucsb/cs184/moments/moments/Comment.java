@@ -30,6 +30,7 @@ public class Comment implements Parcelable {
         this.userid = userid;
         this.content = content;
         this.time = time;
+        this.postKey = null;
 //        this.parent = parent;
     }
 
@@ -41,16 +42,7 @@ public class Comment implements Parcelable {
         } else {
             time = in.readLong();
         }
-        if (in.readByte() == 0) {
-            postKey = null;
-        } else {
-            postKey = in.readParcelable(Post.Key.class.getClassLoader());
-        }
-//        if (in.readByte() == 0) {
-//            parent = null;
-//        } else {
-//            parent = in.readParcelable(Key.class.getClassLoader());
-//        }
+        postKey = in.readParcelable(Post.Key.class.getClassLoader());
         replies = in.createTypedArrayList(Comment.CREATOR);
         ratings = in.createTypedArrayList(Rating.CREATOR);
     }
@@ -65,18 +57,7 @@ public class Comment implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeLong(time);
         }
-        if (postKey == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeParcelable(postKey, flags);
-        }
-//        if (parent == null) {
-//            dest.writeByte((byte) 0);
-//        } else {
-//            dest.writeByte((byte) 1);
-//            dest.writeParcelable(parent, flags);
-//        }
+        dest.writeParcelable(postKey, flags);
         dest.writeTypedList(replies);
         dest.writeTypedList(ratings);
     }
