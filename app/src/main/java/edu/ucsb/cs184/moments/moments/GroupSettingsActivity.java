@@ -68,8 +68,8 @@ public class GroupSettingsActivity extends AppCompatActivity {
     }
 
     public static class SettingsFragment extends PreferenceFragment {
-        private Preference icon, name, number, member, sortby, quit;
-        private EditTextPreference intro;
+        private Preference icon, number, member, sortby, quit;
+        private EditTextPreference name, intro;
         private boolean init = false;
         private Group group;
         private Activity activity;
@@ -79,7 +79,16 @@ public class GroupSettingsActivity extends AppCompatActivity {
             // here we should call settings ui
             addPreferencesFromResource(R.xml.group_preferences);
             icon = findPreference("Group Icon");
-            name = findPreference("Group Name");
+            name = (EditTextPreference) findPreference("Group Name");
+            name.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    String data = newValue.toString();
+                    group.modifyName(data);
+                    name.setSummary(data);
+                    return true;
+                }
+            });
             number = findPreference("Group Number");
             member = findPreference("Group Members");
             intro = (EditTextPreference) findPreference("Group Intro");
@@ -93,7 +102,7 @@ public class GroupSettingsActivity extends AppCompatActivity {
                     intent.putExtra(UploadIconActivity.GROUP, group);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
-                    return false;
+                    return true;
                 }
             });
             intro.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -102,7 +111,7 @@ public class GroupSettingsActivity extends AppCompatActivity {
                     String data = newValue.toString();
                     group.modifyIntro(data);
                     intro.setSummary(data);
-                    return false;
+                    return true;
                 }
             });
             activity = getActivity();
@@ -114,7 +123,7 @@ public class GroupSettingsActivity extends AppCompatActivity {
             group = data;
             if (!init) return;
             name.setSummary(group.getName());
-            name.setDefaultValue(group.getName());
+            name.setText(group.getName());
             number.setSummary(group.getNumber() + "");
             member.setSummary(group.getMemberSize() + "");
             member.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -137,6 +146,7 @@ public class GroupSettingsActivity extends AppCompatActivity {
                 }
             });
             if (!group.getIntro().isEmpty()) intro.setSummary(group.getIntro());
+            intro.setText(group.getIntro());
             quit.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {

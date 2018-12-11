@@ -362,13 +362,12 @@ public class FirebaseHelper {
         reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Log.d("setImageWithGlide", "onSuccess: " + uri);
                 Glide.with(activity).load(uri).into(imageView);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("setImageWithGlide", "onFailure: ");
+                Log.d("setImageWithGlide", e.toString());
             }
         });
     }

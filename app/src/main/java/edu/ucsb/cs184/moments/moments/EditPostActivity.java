@@ -114,8 +114,12 @@ public class EditPostActivity extends AppCompatActivity {
                 Post post = getPost();
                 for (String name: post.findAtUsers()){
                     User user = User.findUserWithName(name);
-                    if (user != null && group.hasMember(user.getId()))
-                        user.atMe(post);
+                    if (user != null)
+                        if (post.postedInGroup())
+                            if (group.hasMember(user.getId()))
+                                user.atMe(post);
+                        else
+                            user.atMe(post);
                 }
                 callBack.putExtra(POST, post);
                 if (group == null) User.user.addPost(post);

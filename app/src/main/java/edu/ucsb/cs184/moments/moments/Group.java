@@ -41,6 +41,7 @@ public class Group implements Parcelable {
         intro = in.readString();
         members = in.createStringArrayList();
         posts = in.createTypedArrayList(Post.CREATOR);
+        messages = in.createTypedArrayList(Message.CREATOR);
     }
 
     @Override
@@ -53,6 +54,7 @@ public class Group implements Parcelable {
         dest.writeString(intro);
         dest.writeStringList(members);
         dest.writeTypedList(posts);
+        dest.writeTypedList(messages);
     }
 
     @Override

@@ -218,7 +218,7 @@ public class FullPostActivity extends AppCompatActivity {
         username.setText(user.getName());
         FirebaseHelper.setIcon(user.GetIcon(), this, poster_icon);
         time.setText(TimeText(post.getTime()));
-        PostAdapter.setContent(getApplicationContext(), content, post.getContent());
+        PostAdapter.setContent(this, content, post.getContent());
         Rating rating = post.hasRated();
         if (rating != null) ratingBar.setRating(rating.getRating());
         int comments_count = post.comments_recv();
